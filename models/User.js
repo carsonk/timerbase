@@ -36,5 +36,4 @@ schema.methods.comparePassword = function(candidatePassword, cb) {
     });
 };
 
-
 module.exports = mongoose.model('User', schema);
