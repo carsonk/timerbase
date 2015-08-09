@@ -6,13 +6,13 @@ var JSX = require('node-jsx').install(),
 module.exports = {
     index: function(req, res) {
         Timer.getTimers(0, 0, function(timers, pages) {
-            var markup = React.renderComponentToString(
-                TimerApp({ timers: timers })
-            );
+            var TimerAppFactory = React.createFactory(TimerApp);
+
+            var markup = TimerAppFactory({timers: timers});
 
             res.render('home', {
                 markup: markup,
-                state: JSON.stringify(tweets)
+                state: JSON.stringify(timers)
             });
         });
     }
